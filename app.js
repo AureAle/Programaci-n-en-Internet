@@ -8,9 +8,13 @@
     console.log('hi');
 }
 greet();
-
+//functions are first-class
+/*function logGreeting(fn){
+    fn();
+}
+logGreeting(greet);*/
 //refactor
-function logGreeting(fn){
+let logGreeting=(fn)=>{
     fn();
 }
 logGreeting(greet);
