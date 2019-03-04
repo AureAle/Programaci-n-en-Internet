@@ -1,34 +1,19 @@
-//function statement 
-/*function greet(){
-    console.log('hi');
-}*/
-
-//refactor
- let greet=()=>{
-    console.log('hi');
-}
+/*var greet = require ('./greet1')
 greet();
-//functions are first-class
-/*function logGreeting(fn){
-    fn();
-}
-logGreeting(greet);*/
-//refactor
-let logGreeting=(fn)=>{
-    fn();
-}
-logGreeting(greet);
 
-//function expresion
-let greetMe = function(){//funcion anonima
-    console.log('Hola Ale');
-}
-greetMe();
+var greet2 = require('./greet2').greet();
+greet2();
 
-//es first-class
-logGreeting(greetMe);
+ var greet3 = require('./greet3');
+ greet3.greet();
+ greet3.greeting = 'changed hello world';
 
-//use a function expression on the fly (directa)
-logGreeting(function(){
-    console.log('Hello');
-});
+ var greet3b = require('./greet3');
+ greet3b.greet();
+
+ var greet4 = require('./greet4');
+ var grtr = new greet4();//constructor
+ grtr.greet();*/
+
+ var greet5 = require('./greet5').greet;
+ greet5();
