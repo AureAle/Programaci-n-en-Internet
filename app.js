@@ -1,43 +1,17 @@
-//object properties and metods
-var obj = {
-    greet: 'Hello'
+var person = {
+    firstname: '',
+    lastname: '',
+    greet: function(){
+        return this.firstname + ' ' + this.lastname;
+    }
 }
-console.log(obj.greet);
-console.log(obj['greet']);//accediento a la propiedad de un objeto mediante su clave
-var prop = 'greet';
-console.log(obj[prop]);
+var john = Object.create(person);
+john.firstname='John';//override 
+john.lastname='Doe';
 
-//functions and arrays
+var jane = Object.create(person);
+jane.firstname='Jane';//override 
+jane.lastname='Doe';
 
-var arr=[];
-
-arr.push(function(){
-    console.log('Jello1');
-});
-arr.push(function(){
-    console.log('Jello2');
-});
-arr.push(function(){
-    console.log('Jello3');
-});
-arr.forEach(function(item){
-  item();
-});
-
-//emitter
-var Emitter = require('events');//node tiene el evento ya definido 'events'
-var eventConfig = require('./config').events;
-
-var emtr = new Emitter();
-
-emtr.on(eventConfig.GREET, function(){//mapeo en el event Greet = 'greet' para evitar errores al escribir
-    console.log('alguien dijo hola');
-});
-
-emtr.on(eventConfig.GREET, function(){
-    console.log('a greeting occurred');//se le agrega ese comportamiento al evento al momento
-});
-
-console.log('Hello!');
-emtr.emit(eventConfig.GREET);
-
+console.log(john.greet());
+console.log(jane.greet());
