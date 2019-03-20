@@ -2,6 +2,7 @@ var EventEmitter = require('events');//node tiene el modulo ya definido 'events'
 var util = require('util');
 
 function Greetr(){
+    EventEmitter.call(this);//invocando al superconstructor
     this.greeting = "hello";
 }
 util.inherits(Greetr,EventEmitter);//util hereda el evento
