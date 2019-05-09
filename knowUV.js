@@ -29,7 +29,7 @@ request('https://us1.locationiq.com/v1/search.php?key=dc2c7f9eb7e08f&q=Colima&fo
        'x-access-token': '8e9b86548b5a3ff5a679999207a615dd' } };
    
    request(options, function (error, response, body) {
-     if (error) throw new Error(error);
+    if (error) throw new Error(error);
      let info = JSON.parse(body);
      console.log("UV: " +info.result.uv_max);
    })
