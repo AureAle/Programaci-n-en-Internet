@@ -8,14 +8,6 @@ mongoose.connect
 );
 var port = process.env.PORT || 3000;//variable de ambiente escucha en un puerto/*
 
-
-
-
-
-//save the user
-app.get('/person/:id', function(req,res){
-    res.send('<html><head></head><body><h1>Person: ' + 
-    req.params.id + '</h1></body></html>');
 var Schema = mongoose.Schema;
 
 var personSchema = new Schema({
@@ -23,14 +15,26 @@ var personSchema = new Schema({
     lastname: String,
     address: String
 });
+
 var Person = mongoose.model('Person', personSchema);
 
-var john = Person({
-    firstname: req.params.id,
-    lastname: 'Pérez',
-    address: '555 Main St.'
-});
-john.save(function(err){
+//save the user
+app.get('/person/:id', function(req,res){
+    res.send('<html><head></head><body><h1>Person: ${req.params.id}</h1></body></html>');
+
+app.get('/api', (req, res)=>{
+        res.json({firstname: 'john', lastname:'Doe'});
+    });
+app.post('/api', (req, res)=>{
+
+    let person = Person({
+        firstname: req.body.firstname,
+        lastname:req.body.lastname,
+        address:req.body.address
+    });
+
+
+person.save(function(err){
     if(err)throw err;
     console.log('person saved!');
 });
@@ -40,8 +44,8 @@ john.save(function(err){
 app.listen(port);
 
 //get all users
-/*Person.find({}, function(err,users){
-    if(err)throw err;
-//object of all the users
-    console.log(users);
-});*/
+//Person.find({}, function(err,users){
+   // if(err)throw err;
+   // object of all the users
+   // console.log(users);
+    //});
